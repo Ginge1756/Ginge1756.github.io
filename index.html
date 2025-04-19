@@ -1,54 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Adam G.</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <header class="bg-dark text-white py-3">
-        <div class="container">
-            <h1 class="text-center">Welcome to My Professional Portfolio</h1>
-            <nav class="nav justify-content-center">
-                <a class="nav-link text-white" href="index.html">Home</a>
-                <a class="nav-link text-white" href="cv.html">CV</a>
-                <a class="nav-link text-white" href="projects.html">Projects</a>
-                <a class="nav-link text-white" href="blog.html">Blog</a>
-            </nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Professional portfolio of Adam Walker - Software Engineer specializing in Frontend Development, Angular, and TypeScript"
+    />
+    <meta
+      name="keywords"
+      content="software engineer, frontend developer, angular developer, typescript expert"
+    />
+    <meta name="author" content="Adam Walker" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" type="image/png" href="./logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+    />
+
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script type="module" src="index.js"></script>
+    <script src="js/profile-card.js"></script>
+  </head>
+  <body>
+    <div id="colorlib-page">
+      <div class="container-wrap">
+        <a
+          href="#"
+          class="js-colorlib-nav-toggle colorlib-nav-toggle"
+          data-toggle="collapse"
+          data-target="#navbar"
+          aria-expanded="false"
+          aria-controls="navbar"
+          ><i></i
+        ></a>
+        <aside
+          id="colorlib-aside"
+          role="complementary"
+          class="border js-fullheight no-print"
+        >
+          <div class="text-center">
+            <div class="author-img" style="border-radius: 50%; overflow: hidden; width: 150px; height: 150px;">
+              <img alt="profile-img" src="https://avatars.githubusercontent.com/u/55461452?s=400&u=f91b46e3828e13ae46101064cfe70335914f9121" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <h1 id="colorlib-logo"><a href="./index.html">Adam Walker</a></h1>
+          </div>
+          <nav
+            id="colorlib-main-menu"
+            role="navigation"
+            class="navbar"
+            style="padding-top: 2em"
+          >
+            <div id="navbar" class="collapse">
+              <ul>
+                <li><a href="#" data-nav-section="about">About</a></li>
+                <li><a href="#" data-nav-section="skills">Skills</a></li>
+                <li><a href="#" data-nav-section="experience">Work Experience</a></li>
+                <li><a href="#" data-nav-section="education">Education</a></li>
+                <li><a href="#" data-nav-section="blogs">Blogs</a></li>
+                <li><a href="#" data-nav-section="contact">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+        </aside>
+        <div id="colorlib-main">
+          <section class="colorlib-profile" data-section="profile-card">
+            <div class="colorlib-narrow-content">
+              <div
+                class="row row-bottom-padded-sm animate-box"
+                data-animate-effect="fadeInLeft"
+              >
+                <div class="profile-cards">
+                  <div class="col">
+                    <div class="stack-card" user-id="30318689"></div>
+                  </div>
+                  <div class="col">
+                    <div class="github-card" username="Ginge1756"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>  
+          <section class="colorlib-about" data-section="about">
+            <div class="colorlib-narrow-content">
+              <div class="row animate-box" data-animate-effect="fadeInLeft">
+                <div class="about-desc">
+                  <h1>About</h1>
+                  <div id="bio"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="colorlib-skills" data-section="skills">
+            <div class="colorlib-narrow-content">
+              <div
+                class="row row-bottom-padded-sm animate-box"
+                data-animate-effect="fadeInLeft"
+              >
+                <div class="about-desc">
+                  <h1>Skills</h1>
+                </div>
+              </div>
+              <div id="skills" class="row"></div>
+            </div>
+          </section>
+          <section class="colorlib-experience" data-section="experience">
+            <div class="colorlib-narrow-content">
+              <div
+                class="row row-bottom-padded-sm animate-box fadeInLeft animated"
+                data-animate-effect="fadeInLeft"
+              >
+                <div class="about-desc">
+                  <h1>Work <span style="color: #3287ff">Experience</span></h1>
+                </div>
+              </div>
+              <div class="timeline-centered" id="experience"></div>
+            </div>
+          </section>
+          <section class="colorlib-education" data-section="education">
+            <div class="colorlib-narrow-content">
+              <div
+                class="row row-bottom-padded-sm animate-box fadeInLeft animated"
+                data-animate-effect="fadeInLeft"
+              >
+                <div class="about-desc">
+                  <h1>Education</h1>
+                </div>
+              </div>
+              <div class="timeline-centered" id="education"></div>
+            </div>
+          </section>
+          <section class="colorlib-blogs no-print" data-section="blogs">
+            <div class="colorlib-narrow-content">
+              <div
+                class="row row-bottom-padded-sm animate-box"
+                data-animate-effect="fadeInLeft"
+              >
+                <div class="about-desc">
+                  <a
+                    href="https://Ginge1756.medium.com/"
+                    target="_blank"
+                    style="color: inherit"
+                  >
+                    <h1>
+                      Latest <span style="color: #3287ff">Blogs</span>
+                      <i
+                        class="fa fa-external-link"
+                        aria-hidden="true"
+                        style="font-size: 30px"
+                      ></i>
+                    </h1>
+                  </a>
+                </div>
+              </div>
+              <ul
+                id="accordion"
+                class="accordion animate-box"
+                data-animate-effect="fadeInLeft"
+              >
+                <li class="open">
+                  <ul
+                    id="blogs"
+                    class="submenu"
+                    style="
+                      display: flex;
+                      padding: 10px;
+                      flex-direction: column;
+                      gap: 10px;
+                    "
+                  ></ul>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section class="colorlib-contact" data-section="contact">
+            <div class="colorlib-narrow-content">
+              <div
+                class="row row-bottom-padded-sm animate-box"
+                data-animate-effect="fadeInLeft"
+              >
+                <div class="about-desc">
+                  <h1>Contact</h1>
+                </div>
+                <p>
+                  Feel free to email me at
+                  <strong>Ginge1756@gmail.com</strong> for tech
+                  discussions, business opportunities, or just to say hello—I’d
+                  love to hear from you!
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="colorlib-footer no-print" data-section="footer">
+            <div class="colorlib-narrow-content">
+              <footer class="footer" id="footer"></footer>
+            </div>
+          </section>
+
         </div>
-    </header>
-    <main class="container my-5">
-        <section class="text-center">
-            <h2>About Me</h2>
-            <p>Hello! I'm Adam, a developer passionate about creating impactful projects. Explore my site to learn more about me.</p>
-        </section>
-        <section class="row text-center mt-5">
-            <div class="col-md-4">
-                <i class="fas fa-user-tie fa-3x"></i>
-                <h3>Professional CV</h3>
-                <p>Learn about my professional journey and skills.</p>
-                <a href="cv.html" class="btn btn-primary">View CV</a>
-            </div>
-            <div class="col-md-4">
-                <i class="fas fa-project-diagram fa-3x"></i>
-                <h3>Projects</h3>
-                <p>Explore the projects I've worked on.</p>
-                <a href="projects.html" class="btn btn-primary">View Projects</a>
-            </div>
-            <div class="col-md-4">
-                <i class="fas fa-blog fa-3x"></i>
-                <h3>Blog</h3>
-                <p>Read my thoughts and insights on various topics.</p>
-                <a href="blog.html" class="btn btn-primary">Read Blog</a>
-            </div>
-        </section>
-    </main>
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 Adam G. | <a href="#" class="text-white">Contact Me</a></p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+      </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
 </html>

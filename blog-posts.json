@@ -1,0 +1,14 @@
+[
+    {
+        "title": "First Blog Post",
+        "summary": "An introduction to my blog and what I plan to write about.",
+        "date": "April 10, 2025",
+        "link": "posts/first-blog-post.html"
+    },
+    {
+        "title": "My Latest Project",
+        "summary": "A deep dive into my latest project and the challenges I faced.",
+        "date": "April 15, 2025",
+        "link": "posts/my-latest-project.html"
+    }
+]

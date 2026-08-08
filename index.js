@@ -412,7 +412,7 @@ function populateLinks(items, id) {
       div.className = "copyright-text no-print";
       item.data.forEach(function (copyright) {
         let p = document.createElement("p");
-        p.innerHTML = copyright;
+        p.innerHTML = copyright.replace("&hearts;", '<span class="footer-heart" aria-label="love">&hearts;</span>');
         div.append(p);
       });
       footer.append(div);

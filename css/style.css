@@ -2811,6 +2811,7 @@ html {
 body {
   margin: 0;
   font-family: "Space Grotesk", sans-serif !important;
+  font-weight: 500;
   color: var(--text-body);
   background:
     radial-gradient(circle at 8% 0%, rgba(89, 114, 248, 0.16), transparent 28%),
@@ -2834,6 +2835,8 @@ a {
   align-items: center;
   gap: 28px;
   margin-bottom: clamp(40px, 9vh, 120px);
+  max-width: 1320px;
+  margin-inline: auto;
 }
 
 .brand-mark {
@@ -2897,6 +2900,8 @@ a {
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.56fr);
   gap: clamp(28px, 8vw, 130px);
   align-items: end;
+  max-width: 1320px;
+  margin-inline: auto;
 }
 
 .hero-copy {
@@ -2927,7 +2932,7 @@ a {
   margin: 0;
   line-height: 0.92;
   font-size: clamp(4.2rem, 10vw, 10.5rem);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.04em;
 }
 
@@ -3083,6 +3088,7 @@ a {
 .content-section {
   max-width: 1140px;
   margin-top: 90px;
+  margin-inline: auto;
 }
 
 .section-heading {
@@ -3115,7 +3121,7 @@ a {
   margin: 0;
   color: var(--text);
   font-size: clamp(2.2rem, 4vw, 4.5rem);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .editorial-heading h2 {
@@ -3277,7 +3283,7 @@ a {
   margin: 0 0 8px;
   font-family: "Space Grotesk", sans-serif;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text);
 }
 
@@ -3415,6 +3421,65 @@ footer {
   background: transparent;
   border-radius: 0;
   box-shadow: none;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 22px;
+  align-items: end;
+  padding: clamp(22px, 2.2vw, 34px);
+}
+
+footer .col {
+  display: grid;
+  gap: 12px;
+}
+
+.col-title {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.4rem, 1.8vw, 2rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.col-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.col-list li + li {
+  margin-top: 6px;
+}
+
+.col-list a {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.06rem, 1.15vw, 1.26rem);
+  font-weight: 500;
+  line-height: 1.6;
+  text-decoration: none;
+  opacity: 0.96;
+}
+
+.col-list a:hover,
+.col-list a:focus {
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.copyright-text {
+  justify-self: end;
+  align-self: end;
+}
+
+.copyright-text p {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(0.98rem, 1.02vw, 1.1rem);
+  font-weight: 500;
+}
+
+.footer-heart {
+  color: #ff4d62;
 }
 
 .hero-actions .hero-button,
@@ -3506,6 +3571,94 @@ strong {
 
   .editorial-heading h2 {
     max-width: none;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .copyright-text {
+    justify-self: start;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .site-shell {
+    padding-inline: clamp(32px, 4vw, 88px);
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+    gap: clamp(30px, 3.6vw, 62px);
+  }
+
+  .hero-copy {
+    max-width: 860px;
+    padding-top: clamp(26px, 7vh, 102px);
+  }
+
+  .hero-name {
+    font-size: clamp(5rem, 8vw, 9.2rem);
+  }
+
+  .hero-role {
+    margin-top: 34px;
+    font-size: clamp(2.35rem, 3.2vw, 3.5rem);
+  }
+
+  .hero-summary {
+    max-width: 50ch;
+    font-size: clamp(1.16rem, 1.15vw, 1.44rem);
+  }
+
+  .hero-highlights {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .content-section {
+    max-width: 1320px;
+  }
+
+  .editorial-heading h2 {
+    max-width: 24ch;
+    font-size: clamp(2.3rem, 3.2vw, 4rem);
+  }
+
+  .prose p {
+    font-size: 1.1rem;
+  }
+
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label .timeline-text,
+  .skill-card-summary,
+  .publish-date,
+  .blog-description,
+  .contact-panel p {
+    font-size: 1rem;
+  }
+
+  .skill-card-title,
+  .blog-heading,
+  .certification-title {
+    font-size: 1.26rem;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .site-header,
+  .hero-grid,
+  .content-section {
+    max-width: 1440px;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) 390px;
+  }
+
+  .hero-summary {
+    max-width: 52ch;
+    font-size: 1.26rem;
   }
 }
 

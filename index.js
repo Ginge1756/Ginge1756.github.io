@@ -355,7 +355,7 @@ function populateHero(details) {
   document.getElementById("hero-focus").textContent = details.focus;
   document.getElementById("hero-location").textContent = details.location;
   document.getElementById("hero-availability").textContent = details.availability;
-  window.parent.document.title = "Adam Walker";
+  document.title = details.pageTitle;
 }
 
 function populateHighlights(items, id) {
@@ -380,8 +380,14 @@ function getElement(tagName, className) {
 }
 
 function getBlogPreview(html) {
-  const [, doc] = /<p>(.*?)<\/p>/.exec(html) || [];
-  return doc || "Read the full article for more details.";
+  const [, doc] = /<p>(.*?)<\/p>/s.exec(html) || [];
+  if (!doc) {
+    return "Read the full article for more details.";
+  }
+
+  const preview = document.createElement("div");
+  preview.innerHTML = doc;
+  return preview.textContent?.trim() || "Read the full article for more details.";
 }
 
 function getBlogDate(publishDate) {

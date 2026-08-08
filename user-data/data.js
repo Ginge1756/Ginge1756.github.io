@@ -1,4 +1,5 @@
 export const hero = {
+  pageTitle: "Adam Walker",
   eyebrow: "Full Stack Engineer • DevOps mindset • Product-focused delivery",
   title: "Building reliable digital products from cloud infrastructure to polished user experiences.",
   summary:

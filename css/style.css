@@ -2297,7 +2297,6 @@ a {
   box-shadow: var(--shadow-soft);
 }
 
-.hero-copy,
 .hero-profile-panel,
 .skill-card,
 .blog-card,
@@ -2638,8 +2637,8 @@ footer {
   font-weight: 700;
 }
 
-.blog-feed {
-  display: grid !important;
+ul.blog-feed {
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   padding: 0;

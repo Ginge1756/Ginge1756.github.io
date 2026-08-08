@@ -11,6 +11,7 @@ const {
 } = window.AppData || {};
 
 const { medium } = window.URLs || {};
+const BADGE_ASSET_VERSION = "20260808-3";
 
 if (!window.AppData || !window.URLs) {
   console.error("App data failed to load. Ensure user-data/data.js and user-data/urls.js are loaded before index.js.");
@@ -99,10 +100,10 @@ function getCertificationShield(level) {
   const normalizedLevel = (level || "associate").toLowerCase();
 
   if (normalizedLevel === "expert") {
-    return new URL("./images/microsoft-certified-expert-badge.svg", document.baseURI).href;
+    return `${new URL("./images/microsoft-certified-expert-badge.svg", document.baseURI).href}?v=${BADGE_ASSET_VERSION}`;
   }
 
-  return new URL("./images/microsoft-certified-associate-badge.svg", document.baseURI).href;
+  return `${new URL("./images/microsoft-certified-associate-badge.svg", document.baseURI).href}?v=${BADGE_ASSET_VERSION}`;
 }
 
 function populateCertifications(items, id) {
@@ -128,7 +129,7 @@ function populateCertifications(items, id) {
       const fallbackFile = (item.level || "associate").toLowerCase() === "expert"
         ? "microsoft-certified-expert-badge.svg"
         : "microsoft-certified-associate-badge.svg";
-      icon.src = `./images/${fallbackFile}`;
+      icon.src = `./images/${fallbackFile}?v=${BADGE_ASSET_VERSION}`;
     };
 
     const content = getElement("div", "certification-content");

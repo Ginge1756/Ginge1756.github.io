@@ -3219,10 +3219,11 @@ a {
   height: 104px;
   object-fit: contain;
   display: block;
-  padding: 8px;
-  border: 1px solid rgba(102, 128, 242, 0.4);
-  background: linear-gradient(180deg, rgba(9, 18, 48, 0.95), rgba(6, 13, 33, 0.95));
-  filter: saturate(1.08) contrast(1.06);
+  padding: 6px;
+  border: 1px solid rgba(85, 113, 240, 0.56);
+  background: linear-gradient(180deg, rgba(4, 10, 29, 0.99), rgba(1, 5, 17, 0.99));
+  filter: none;
+  box-shadow: inset 0 0 0 1px rgba(6, 17, 53, 0.95);
 }
 
 .certification-content {
@@ -3549,6 +3550,6 @@ strong {
   .certification-shield {
     width: 64px;
     height: 80px;
-    padding: 5px;
+    padding: 4px;
   }
 }

@@ -11,7 +11,15 @@ const {
 } = window.AppData || {};
 
 const { medium } = window.URLs || {};
-const BADGE_ASSET_VERSION = "20260808-3";
+const BADGE_ASSET_VERSION = "20260808-4";
+
+function withAssetVersion(url) {
+  if (window.location.protocol === "file:") {
+    return url;
+  }
+
+  return `${url}?v=${BADGE_ASSET_VERSION}`;
+}
 
 if (!window.AppData || !window.URLs) {
   console.error("App data failed to load. Ensure user-data/data.js and user-data/urls.js are loaded before index.js.");
@@ -100,10 +108,10 @@ function getCertificationShield(level) {
   const normalizedLevel = (level || "associate").toLowerCase();
 
   if (normalizedLevel === "expert") {
-    return `${new URL("./images/microsoft-certified-expert-badge.svg", document.baseURI).href}?v=${BADGE_ASSET_VERSION}`;
+    return withAssetVersion(new URL("./images/microsoft-certified-expert-badge.png", document.baseURI).href);
   }
 
-  return `${new URL("./images/microsoft-certified-associate-badge.svg", document.baseURI).href}?v=${BADGE_ASSET_VERSION}`;
+  return withAssetVersion(new URL("./images/microsoft-certified-associate-badge.png", document.baseURI).href);
 }
 
 function populateCertifications(items, id) {
@@ -117,19 +125,19 @@ function populateCertifications(items, id) {
     const localShieldUrl = getCertificationShield(item.level || "associate");
     icon.src = localShieldUrl;
     icon.alt = `Microsoft ${item.level || "associate"} certification badge`;
-    icon.loading = "lazy";
+    icon.loading = "eager";
     icon.onerror = () => {
       if (icon.dataset.localRetry === "1") {
         icon.onerror = null;
         return;
       }
 
-      // Retry once with a plain relative path for hosts that rewrite absolute paths.
+      // Retry once with SVG source art as a fallback if PNG loading fails.
       icon.dataset.localRetry = "1";
       const fallbackFile = (item.level || "associate").toLowerCase() === "expert"
         ? "microsoft-certified-expert-badge.svg"
         : "microsoft-certified-associate-badge.svg";
-      icon.src = `./images/${fallbackFile}?v=${BADGE_ASSET_VERSION}`;
+      icon.src = withAssetVersion(`./images/${fallbackFile}`);
     };
 
     const content = getElement("div", "certification-content");

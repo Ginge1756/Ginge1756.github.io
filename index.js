@@ -99,10 +99,10 @@ function getCertificationShield(level) {
   const normalizedLevel = (level || "associate").toLowerCase();
 
   if (normalizedLevel === "expert") {
-    return "images/microsoft-certified-expert-badge.svg";
+    return new URL("./images/microsoft-certified-expert-badge.svg", document.baseURI).href;
   }
 
-  return "images/microsoft-certified-associate-badge.svg";
+  return new URL("./images/microsoft-certified-associate-badge.svg", document.baseURI).href;
 }
 
 function populateCertifications(items, id) {
@@ -113,8 +113,23 @@ function populateCertifications(items, id) {
     card.setAttribute("data-animate-effect", "fadeInLeft");
 
     const icon = getElement("img", "certification-shield");
-    icon.src = getCertificationShield(item.level || "associate");
+    const localShieldUrl = getCertificationShield(item.level || "associate");
+    icon.src = localShieldUrl;
     icon.alt = `Microsoft ${item.level || "associate"} certification badge`;
+    icon.loading = "lazy";
+    icon.onerror = () => {
+      if (icon.dataset.localRetry === "1") {
+        icon.onerror = null;
+        return;
+      }
+
+      // Retry once with a plain relative path for hosts that rewrite absolute paths.
+      icon.dataset.localRetry = "1";
+      const fallbackFile = (item.level || "associate").toLowerCase() === "expert"
+        ? "microsoft-certified-expert-badge.svg"
+        : "microsoft-certified-associate-badge.svg";
+      icon.src = `./images/${fallbackFile}`;
+    };
 
     const content = getElement("div", "certification-content");
     const meta = getElement("p", "certification-meta");

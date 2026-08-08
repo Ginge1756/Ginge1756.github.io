@@ -3205,7 +3205,7 @@ a {
 
 .certification-card {
   display: grid;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 96px 1fr;
   gap: 12px;
   align-items: start;
   margin: 0;
@@ -3215,9 +3215,14 @@ a {
 }
 
 .certification-shield {
-  width: 58px;
-  height: 70px;
+  width: 84px;
+  height: 104px;
   object-fit: contain;
+  display: block;
+  padding: 8px;
+  border: 1px solid rgba(102, 128, 242, 0.4);
+  background: linear-gradient(180deg, rgba(9, 18, 48, 0.95), rgba(6, 13, 33, 0.95));
+  filter: saturate(1.08) contrast(1.06);
 }
 
 .certification-content {
@@ -3536,13 +3541,14 @@ strong {
   }
 
   .certification-card {
-    grid-template-columns: 52px 1fr;
+    grid-template-columns: 74px 1fr;
     gap: 10px;
     padding: 10px;
   }
 
   .certification-shield {
-    width: 44px;
-    height: 54px;
+    width: 64px;
+    height: 80px;
+    padding: 5px;
   }
 }

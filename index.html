@@ -65,6 +65,7 @@
           >
             <div id="navbar" class="collapse">
               <ul>
+                <li><a href="#" data-nav-section="home">Home</a></li>
                 <li><a href="#" data-nav-section="about">About</a></li>
                 <li><a href="#" data-nav-section="skills">Skills</a></li>
                 <li><a href="#" data-nav-section="experience">Work Experience</a></li>
@@ -76,27 +77,59 @@
           </nav>
         </aside>
         <div id="colorlib-main">
-          <section class="colorlib-profile" data-section="profile-card">
+          <section class="colorlib-hero-panel" data-section="home">
             <div class="colorlib-narrow-content">
-              <div
-                class="row row-bottom-padded-sm animate-box"
-                data-animate-effect="fadeInLeft"
-              >
-                <div class="profile-cards">
-                  <div class="col">
-                    <div class="stack-card" user-id="30318689"></div>
+              <div class="hero-shell animate-box" data-animate-effect="fadeInLeft">
+                <div class="hero-copy">
+                  <p id="hero-eyebrow" class="section-kicker"></p>
+                  <h1 id="hero-title" class="hero-title"></h1>
+                  <p id="hero-summary" class="hero-summary"></p>
+                  <div class="hero-actions">
+                    <a href="#experience-section" class="hero-button hero-button-primary">View Experience</a>
+                    <a href="#contact-section" class="hero-button hero-button-secondary">Start a Conversation</a>
                   </div>
-                  <div class="col">
-                    <div class="github-card" username="Ginge1756"></div>
+                  <div id="hero-highlights" class="hero-highlights"></div>
+                </div>
+                <div class="hero-sidebar">
+                  <div class="hero-profile-panel">
+                    <div class="hero-profile-header">
+                      <img
+                        class="hero-avatar"
+                        alt="Adam Walker portrait"
+                        src="https://avatars.githubusercontent.com/u/55461452?s=400&u=f91b46e3828e13ae46101064cfe70335914f9121"
+                      />
+                      <div>
+                        <p class="hero-profile-label">What I focus on</p>
+                        <h2 id="hero-focus" class="hero-focus"></h2>
+                      </div>
+                    </div>
+                    <ul class="hero-profile-list">
+                      <li id="hero-location"></li>
+                      <li id="hero-availability"></li>
+                    </ul>
+                    <div class="hero-socials">
+                      <a href="https://github.com/Ginge1756/" target="_blank" rel="noreferrer">GitHub</a>
+                      <a href="https://www.linkedin.com/in/adam-w-68775a3b/" target="_blank" rel="noreferrer">LinkedIn</a>
+                      <a href="https://Ginge1756.medium.com/" target="_blank" rel="noreferrer">Medium</a>
+                    </div>
+                  </div>
+                  <div class="profile-cards">
+                    <div class="col">
+                      <div class="stack-card" user-id="30318689"></div>
+                    </div>
+                    <div class="col">
+                      <div class="github-card" username="Ginge1756"></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>  
+          </section>
           <section class="colorlib-about" data-section="about">
             <div class="colorlib-narrow-content">
               <div class="row animate-box" data-animate-effect="fadeInLeft">
                 <div class="about-desc">
+                  <p class="section-kicker">Profile</p>
                   <h1>About</h1>
                   <div id="bio"></div>
                 </div>
@@ -110,19 +143,21 @@
                 data-animate-effect="fadeInLeft"
               >
                 <div class="about-desc">
+                  <p class="section-kicker">Core strengths</p>
                   <h1>Skills</h1>
                 </div>
               </div>
-              <div id="skills" class="row"></div>
+              <div id="skills" class="skills-grid"></div>
             </div>
           </section>
-          <section class="colorlib-experience" data-section="experience">
+          <section id="experience-section" class="colorlib-experience" data-section="experience">
             <div class="colorlib-narrow-content">
               <div
                 class="row row-bottom-padded-sm animate-box fadeInLeft animated"
                 data-animate-effect="fadeInLeft"
               >
                 <div class="about-desc">
+                  <p class="section-kicker">Career highlights</p>
                   <h1>Work <span style="color: #3287ff">Experience</span></h1>
                 </div>
               </div>
@@ -136,6 +171,7 @@
                 data-animate-effect="fadeInLeft"
               >
                 <div class="about-desc">
+                  <p class="section-kicker">Foundations</p>
                   <h1>Education</h1>
                 </div>
               </div>
@@ -154,6 +190,7 @@
                     target="_blank"
                     style="color: inherit"
                   >
+                    <p class="section-kicker">Writing & ideas</p>
                     <h1>
                       Latest <span style="color: #3287ff">Blogs</span>
                       <i
@@ -173,33 +210,31 @@
                 <li class="open">
                   <ul
                     id="blogs"
-                    class="submenu"
-                    style="
-                      display: flex;
-                      padding: 10px;
-                      flex-direction: column;
-                      gap: 10px;
-                    "
+                    class="submenu blog-feed"
                   ></ul>
                 </li>
               </ul>
             </div>
           </section>
-          <section class="colorlib-contact" data-section="contact">
+          <section id="contact-section" class="colorlib-contact" data-section="contact">
             <div class="colorlib-narrow-content">
               <div
                 class="row row-bottom-padded-sm animate-box"
                 data-animate-effect="fadeInLeft"
               >
                 <div class="about-desc">
+                  <p class="section-kicker">Let’s build something useful</p>
                   <h1>Contact</h1>
                 </div>
-                <p>
-                  Feel free to email me at
-                  <strong>Ginge1756@gmail.com</strong> for tech
-                  discussions, business opportunities, or just to say hello—I’d
-                  love to hear from you!
-                </p>
+                <div class="contact-panel">
+                  <p>
+                    Feel free to email me at
+                    <strong>Ginge1756@gmail.com</strong> for tech
+                    discussions, business opportunities, or just to say hello—I’d
+                    love to hear from you.
+                  </p>
+                  <a class="hero-button hero-button-primary" href="mailto:Ginge1756@gmail.com">Email Adam</a>
+                </div>
               </div>
             </div>
           </section>

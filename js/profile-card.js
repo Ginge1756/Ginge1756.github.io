@@ -24,34 +24,33 @@ window.addEventListener("DOMContentLoaded", async function () {
     const profileLink = website_url || link;
 
     el.innerHTML = `
-        <a href="${profileLink}" target="_blank" style="text-decoration: none; color: black; display: block; border-radius: 12px; padding: 16px; font-size: 14px; background: linear-gradient(135deg,rgb(153,203,255), rgb(50,135,223)); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease-in-out;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <img style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #fff;" src="https://avatars.githubusercontent.com/u/55461452?s=400&u=f91b46e3828e13ae46101064cfe70335914f9121" alt="Profile image"></img>
-                <div style="flex-grow: 1;">
-                    <h3 style="margin: 0; font-size: 18px; font-weight: bold;">${display_name}</h3>
-                    <p style="margin: 4px 0 0; font-size: 12px; color: #555;">
-                        @${link
-                          .replace("https://", "")
-                          .replace(`/users/${user_id}`, "")}
+        <a href="${profileLink}" target="_blank" rel="noreferrer" class="profile-link-card">
+            <div class="profile-link-card-header">
+                <img class="profile-link-card-avatar" src="https://avatars.githubusercontent.com/u/55461452?s=400&u=f91b46e3828e13ae46101064cfe70335914f9121" alt="Profile image"></img>
+                <div class="profile-link-card-copy">
+                    <p class="profile-link-card-label">Stack Overflow</p>
+                    <h3 class="profile-link-card-title">${display_name}</h3>
+                    <p class="profile-link-card-handle">
+                        @${link.replace("https://", "").replace(`/users/${user_id}`, "")}
                     </p>
                 </div>
             </div>
-            <div style="margin-top: 16px; display: flex; justify-content: space-between; text-align: center;">
+            <div class="profile-link-card-stats">
                 <div>
-                    <p style="font-size: 12px; color: #666; margin: 0;">REPUTATION</p>
-                    <p style="font-size: 20px; font-weight: bold; color: #222;">${reputation}</p>
+                    <p class="profile-link-card-stat-label">Reputation</p>
+                    <p class="profile-link-card-stat-value">${reputation}</p>
                 </div>
                 <div>
-                    <p style="font-size: 12px; color: #666; margin: 0;">GOLD</p>
-                    <p style="font-size: 20px; font-weight: bold; color: #222;">${gold}</p>
-                </div>
-                                <div>
-                    <p style="font-size: 12px; color: #666; margin: 0;">SILVER</p>
-                    <p style="font-size: 20px; font-weight: bold; color: #222;">${silver}</p>
+                    <p class="profile-link-card-stat-label">Gold</p>
+                    <p class="profile-link-card-stat-value">${gold}</p>
                 </div>
                 <div>
-                    <p style="font-size: 12px; color: #666; margin: 0;">BRONZE</p>
-                    <p style="font-size: 20px; font-weight: bold; color: #222;">${bronze}</p>
+                    <p class="profile-link-card-stat-label">Silver</p>
+                    <p class="profile-link-card-stat-value">${silver}</p>
+                </div>
+                <div>
+                    <p class="profile-link-card-stat-label">Bronze</p>
+                    <p class="profile-link-card-stat-value">${bronze}</p>
                 </div>
             </div>
         </a>
@@ -66,28 +65,29 @@ window.addEventListener("DOMContentLoaded", async function () {
       response;
 
     el.innerHTML = `
-        <a href="${html_url}" target="_blank" style="text-decoration: none; color: black; display: block; border-radius: 12px; padding: 16px; font-size: 14px; background: linear-gradient(135deg, rgb(153,203,255), rgb(50,135,223)); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease-in-out;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <img style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #fff;" src="${avatar_url}" alt="Profile image"></img>
-                <div style="flex-grow: 1;">
-                    <h3 style="margin: 0; font-size: 18px; font-weight: bold;">${name}</h3>
-                    <p style="margin: 4px 0 0; font-size: 12px; color: #555;">
+        <a href="${html_url}" target="_blank" rel="noreferrer" class="profile-link-card">
+            <div class="profile-link-card-header">
+                <img class="profile-link-card-avatar" src="${avatar_url}" alt="Profile image"></img>
+                <div class="profile-link-card-copy">
+                    <p class="profile-link-card-label">GitHub</p>
+                    <h3 class="profile-link-card-title">${name}</h3>
+                    <p class="profile-link-card-handle">
                         @${html_url.replace("https://", "")}
                     </p>
                 </div>
             </div>
-            <div style="margin-top: 16px; display: flex; justify-content: space-between; text-align: center;">
+            <div class="profile-link-card-stats profile-link-card-stats--three">
                 <div>
-                    <p style="font-size: 12px; color: #666; margin: 0;">REPOSITORIES</p>
-                    <p style="font-size: 20px; font-weight: bold; color: #222;">${public_repos}</p>
+                    <p class="profile-link-card-stat-label">Repositories</p>
+                    <p class="profile-link-card-stat-value">${public_repos}</p>
                 </div>
                 <div>
-                    <p style="font-size: 12px; color: #666; margin: 0;">FOLLOWERS</p>
-                    <p style="font-size: 20px; font-weight: bold; color: #222;">${followers}</p>
+                    <p class="profile-link-card-stat-label">Followers</p>
+                    <p class="profile-link-card-stat-value">${followers}</p>
                 </div>
                 <div>
-                    <p style="font-size: 12px; color: #666; margin: 0;">FOLLOWING</p>
-                    <p style="font-size: 20px; font-weight: bold; color: #222;">${following}</p>
+                    <p class="profile-link-card-stat-label">Following</p>
+                    <p class="profile-link-card-stat-value">${following}</p>
                 </div>
             </div>
         </a>

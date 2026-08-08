@@ -1,3 +1,15 @@
+export const hero = {
+  eyebrow: "Full Stack Engineer • DevOps mindset • Product-focused delivery",
+  title: "Building reliable digital products from cloud infrastructure to polished user experiences.",
+  summary:
+    "I design and ship software that connects backend reliability, cloud automation, and user-friendly interfaces so teams can move faster with confidence.",
+  focus: "End-to-end engineering across backend services, frontend experiences, mobile apps, and cloud delivery.",
+  location:
+    "Based in Scotland and collaborating with teams that value quality, maintainability, and practical delivery.",
+  availability:
+    "Available for engineering conversations around product delivery, architecture, automation, and platform thinking.",
+};
+
 export const bio = [
   "Hello, I'm Adam Walker!",
   "<strong>Full Stack Software Engineer</strong> with a background in DevOps and a focus on building efficient, scalable applications.",
@@ -7,11 +19,46 @@ export const bio = [
 ];
 
 export const skills = [
-  "C#, Go, Dart, Flutter, JavaScript, TypeScript, HTML5, CSS, Angular",
-  "Azure, Azure DevOps, Azure Functions, App Services, Azure SQL, Blob Storage",
-  "ARM Templates, Bicep, PowerShell, YAML, Terraform (basic)",
-  "Git, GitHub Actions, CI/CD, Monitoring & Logging (App Insights, Log Analytics)",
-  "Clean Architecture, API Design, Infrastructure as Code, Automation",
+  {
+    title: "Backend & APIs",
+    summary: "Designing dependable services and integrations that stay maintainable as systems grow.",
+    items: ["C#", ".NET", "Go", "API Design", "Microservices", "Azure Functions"],
+  },
+  {
+    title: "Frontend & Mobile",
+    summary: "Creating clear, usable interfaces across admin tools, web apps, and mobile products.",
+    items: ["Angular", "TypeScript", "JavaScript", "Flutter", "Dart", "HTML5 & CSS"],
+  },
+  {
+    title: "Cloud & Delivery",
+    summary: "Automating infrastructure and release workflows so teams can ship with confidence.",
+    items: ["Azure", "Azure DevOps", "GitHub Actions", "CI/CD", "App Services", "Azure SQL"],
+  },
+  {
+    title: "Infrastructure & Operations",
+    summary: "Applying platform thinking to observability, infrastructure as code, and operational resilience.",
+    items: ["Bicep", "ARM Templates", "YAML", "PowerShell", "Monitoring & Logging", "Blob Storage"],
+  },
+  {
+    title: "Engineering Approach",
+    summary: "Working in ways that keep products scalable, understandable, and easy to evolve.",
+    items: ["Clean Architecture", "Automation", "DevOps", "Mentoring", "Agile Delivery", "Product Collaboration"],
+  },
+];
+
+export const highlights = [
+  {
+    title: "Cloud-first delivery",
+    description: "Shipping features with Azure-native infrastructure, automation, and operational visibility built in.",
+  },
+  {
+    title: "User-focused engineering",
+    description: "Turning complex product needs into interfaces and workflows that are practical to use every day.",
+  },
+  {
+    title: "Cross-functional impact",
+    description: "Bridging engineering, DevOps, UX, and stakeholders to keep delivery moving in the right direction.",
+  },
 ];
 
 export const experience = [

@@ -99,10 +99,10 @@ function getCertificationShield(level) {
   const normalizedLevel = (level || "associate").toLowerCase();
 
   if (normalizedLevel === "expert") {
-    return "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-expert-badge.svg?branch=main";
+    return "images/microsoft-certified-expert-badge.svg";
   }
 
-  return "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main";
+  return "images/microsoft-certified-associate-badge.svg";
 }
 
 function populateCertifications(items, id) {

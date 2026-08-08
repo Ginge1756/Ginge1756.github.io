@@ -380,7 +380,7 @@ function getElement(tagName, className) {
 }
 
 function getBlogPreview(html) {
-  const [, doc] = /<p>(.*?)<\/p>/g.exec(html) || [];
+  const [, doc] = /<p>(.*?)<\/p>/.exec(html) || [];
   return doc || "Read the full article for more details.";
 }
 

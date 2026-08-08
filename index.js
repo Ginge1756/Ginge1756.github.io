@@ -1,14 +1,20 @@
-import {
+(function () {
+const {
+  hero,
   bio,
   skills,
+  certifications,
   education,
   experience,
   footer,
-} from "./user-data/data.js";
+  highlights,
+} = window.AppData || {};
 
-import { URLs } from "./user-data/urls.js";
+const { medium } = window.URLs || {};
 
-const { medium } = URLs;
+if (!window.AppData || !window.URLs) {
+  console.error("App data failed to load. Ensure user-data/data.js and user-data/urls.js are loaded before index.js.");
+}
 
 async function fetchBlogsFromMedium(url) {
   try {
@@ -68,93 +74,111 @@ function populateBio(items, id) {
 function populateSkills(items, id) {
   const skillsTag = document.getElementById(id);
   items.forEach((item) => {
-    const h3 = getElement("li", null);
-    h3.innerHTML = item;
+    const card = getElement("article", "skill-card animate-box");
+    card.setAttribute("data-animate-effect", "fadeInLeft");
 
-    const divProgressWrap = getElement("div", "progress-wrap");
-    divProgressWrap.append(h3);
+    const title = getElement("h3", "skill-card-title");
+    title.textContent = item.title;
 
-    const divAnimateBox = getElement("div", "col-md-12 animate-box");
-    divAnimateBox.append(divProgressWrap);
+    const summary = getElement("p", "skill-card-summary");
+    summary.textContent = item.summary;
 
-    skillsTag.append(divAnimateBox);
+    const list = getElement("div", "skill-pill-list");
+    item.items.forEach((skill) => {
+      const pill = getElement("span", "skill-pill");
+      pill.textContent = skill;
+      list.append(pill);
+    });
+
+    card.append(title, summary, list);
+    skillsTag.append(card);
+  });
+}
+
+function getCertificationShield(level) {
+  const normalizedLevel = (level || "associate").toLowerCase();
+
+  if (normalizedLevel === "expert") {
+    return "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-expert-badge.svg?branch=main";
+  }
+
+  return "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main";
+}
+
+function populateCertifications(items, id) {
+  const certificationsTag = document.getElementById(id);
+
+  items.forEach((item) => {
+    const card = getElement("article", "certification-card animate-box");
+    card.setAttribute("data-animate-effect", "fadeInLeft");
+
+    const icon = getElement("img", "certification-shield");
+    icon.src = getCertificationShield(item.level || "associate");
+    icon.alt = `Microsoft ${item.level || "associate"} certification badge`;
+
+    const content = getElement("div", "certification-content");
+    const meta = getElement("p", "certification-meta");
+    meta.textContent = "CERTIFICATION";
+
+    const title = getElement("h3", "certification-title");
+    title.textContent = item.title;
+
+    content.append(meta, title);
+
+    if (item.detailsUrl) {
+      const detailsLink = getElement("a", "certification-link");
+      detailsLink.href = item.detailsUrl;
+      detailsLink.target = "_blank";
+      detailsLink.rel = "noreferrer";
+      detailsLink.textContent = "View certification details";
+      content.append(detailsLink);
+    }
+
+    card.append(icon, content);
+    certificationsTag.append(card);
   });
 }
 
 function populateBlogs(items, id) {
   const projectdesign = document.getElementById(id);
-  const count = 3; // Number of blogs to display
+  const blogItems = items.slice(0, 3);
 
-  for (let i = 0; i < count; i++) {
-      // Create a wrapper for the blog card
-      const blogCard = document.createElement("div");
-      blogCard.className = "blog-card";
-      blogCard.style = `
-          display: flex;
-          flex-direction: column;
-          border-radius: 12px;
-          padding: 16px;
-          font-size: 14px;
-          background: linear-gradient(135deg, rgb(153,203,255), rgb(50,135,223));
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-          min-height: 150px;
-          cursor: pointer;
-      `;
+  blogItems.forEach((item) => {
+    const blogCard = document.createElement("li");
+    blogCard.className = "blog-card";
 
-      // Wrap the card content in an anchor tag
-      const blogLink = document.createElement("a");
-      blogLink.href = items[i].link;
-      blogLink.target = "_blank";
-      blogLink.style = "text-decoration: none; color: black; display: block;";
+    const blogLink = document.createElement("a");
+    blogLink.className = "blog-card-link";
+    blogLink.href = item.link;
+    blogLink.target = "_blank";
+    blogLink.rel = "noreferrer";
 
-      blogCard.appendChild(blogLink);
+    const blogTitle = document.createElement("h4");
+    blogTitle.className = "blog-heading";
+    blogTitle.textContent = item.title;
 
-      // Blog Title
-      const blogTitle = document.createElement("h4");
-      blogTitle.className = "blog-heading";
-      blogTitle.innerHTML = items[i].title;
-      blogTitle.style = "margin: 0 0 8px; font-size: 18px; font-weight: bold;";
-      blogLink.appendChild(blogTitle);
+    const pubDateEle = document.createElement("p");
+    pubDateEle.className = "publish-date";
+    pubDateEle.textContent = getBlogDate(item.pubDate);
 
-      // Publish Date
-      const pubDateEle = document.createElement("p");
-      pubDateEle.className = "publish-date";
-      pubDateEle.innerHTML = getBlogDate(items[i].pubDate);
-      pubDateEle.style = "margin: 0 0 12px; font-size: 12px; color: #555;";
-      blogLink.appendChild(pubDateEle);
+    const blogDescription = document.createElement("p");
+    blogDescription.className = "blog-description";
+    blogDescription.textContent = getBlogPreview(item.content);
 
-      // Blog Description
-      const blogDescription = document.createElement("p");
-      blogDescription.className = "blog-description";
-      const html = items[i].content;
-      const [, doc] = /<p>(.*?)<\/p>/g.exec(html) || [];
-      blogDescription.innerHTML = doc;
-      blogDescription.style = "margin: 0 0 12px; font-size: 12px; color: #000;";
-      blogLink.appendChild(blogDescription);
+    const categoriesDiv = document.createElement("div");
+    categoriesDiv.className = "blog-tag-list";
 
-      // Categories (Tags)
-      const categoriesDiv = document.createElement("div");
-      categoriesDiv.style = "display: flex; gap: 8px; margin-top: 12px;";
+    item.categories.slice(0, 3).forEach((category) => {
+      const badge = document.createElement("span");
+      badge.className = "badge";
+      badge.textContent = category;
+      categoriesDiv.appendChild(badge);
+    });
 
-      for (const category of items[i].categories) {
-          const badge = document.createElement("span");
-          badge.className = "badge";
-          badge.innerHTML = category;
-          badge.style = `
-              font-size: 12px;
-              padding: 4px 8px;
-              background-color: #007acc;
-              color: white;
-              border-radius: 4px;
-          `;
-          categoriesDiv.appendChild(badge);
-      }
-
-      blogLink.appendChild(categoriesDiv);
-
-      // Append the blog card to the container
-      projectdesign.appendChild(blogCard);
-  }
+    blogLink.append(blogTitle, pubDateEle, blogDescription, categoriesDiv);
+    blogCard.append(blogLink);
+    projectdesign.appendChild(blogCard);
+  });
 }
 
 function populateRepo(items, id) {
@@ -372,10 +396,52 @@ function populateLinks(items, id) {
   });
 }
 
+function populateHero(details) {
+  const fullName = (details.pageTitle || "Adam Walker").trim();
+  const [firstName, ...rest] = fullName.split(" ");
+  const lastName = rest.join(" ") || "Walker";
+
+  document.getElementById("hero-eyebrow").textContent = details.eyebrow;
+  document.getElementById("hero-name-first").textContent = firstName;
+  document.getElementById("hero-name-last").textContent = lastName;
+  document.getElementById("hero-title").textContent = details.title;
+  document.getElementById("hero-summary").textContent = details.summary;
+  document.getElementById("hero-focus").textContent = details.focus;
+  document.getElementById("hero-location").textContent = details.location;
+  document.getElementById("hero-availability").textContent = details.availability;
+  document.title = fullName;
+}
+
+function populateHighlights(items, id) {
+  const highlightsTag = document.getElementById(id);
+
+  items.forEach((item) => {
+    const card = getElement("article", "highlight-card");
+    const title = getElement("h3", "highlight-card-title");
+    title.textContent = item.title;
+    const description = getElement("p", "highlight-card-description");
+    description.textContent = item.description;
+
+    card.append(title, description);
+    highlightsTag.append(card);
+  });
+}
+
 function getElement(tagName, className) {
   let item = document.createElement(tagName);
   item.className = className;
   return item;
+}
+
+function getBlogPreview(html) {
+  const [, doc] = /<p>(.*?)<\/p>/s.exec(html) || [];
+  if (!doc) {
+    return "Read the full article for more details.";
+  }
+
+  const preview = document.createElement("div");
+  preview.innerHTML = doc;
+  return preview.textContent?.trim() || "Read the full article for more details.";
 }
 
 function getBlogDate(publishDate) {
@@ -410,9 +476,15 @@ function getBlogDate(publishDate) {
   }
 }
 
+populateHero(hero);
+
+populateHighlights(highlights, "hero-highlights");
+
 populateBio(bio, "bio");
 
 populateSkills(skills, "skills");
+
+populateCertifications(certifications, "certifications");
 
 fetchBlogsFromMedium(medium);
 
@@ -421,3 +493,4 @@ populateExp_Edu(experience, "experience");
 populateExp_Edu(education, "education");
 
 populateLinks(footer, "footer");
+})();

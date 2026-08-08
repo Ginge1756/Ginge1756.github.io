@@ -2952,8 +2952,9 @@ a {
   max-width: 42ch;
   margin: 0;
   color: var(--text-body);
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1.05rem, 1.55vw, 1.7rem);
-  line-height: 1.75;
+  line-height: 1.68;
 }
 
 .hero-actions {
@@ -3181,7 +3182,9 @@ a {
 .prose p {
   max-width: 75ch;
   color: var(--text-body);
-  font-size: 1.08rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.04rem;
+  line-height: 1.72;
 }
 
 #bio p {
@@ -3242,7 +3245,9 @@ a {
 .certification-title {
   margin: 0;
   color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 500;
   line-height: 1.45;
 }
 
@@ -3270,14 +3275,18 @@ a {
 
 .skill-card-title {
   margin: 0 0 8px;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1.2rem;
+  font-weight: 600;
   color: var(--text);
 }
 
 .skill-card-summary {
   margin: 0 0 14px;
+  font-family: "Space Grotesk", sans-serif;
   color: var(--text-body);
   font-size: 0.95rem;
+  line-height: 1.68;
 }
 
 .skill-pill-list {
@@ -3327,7 +3336,10 @@ a {
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label .timeline-text {
+  font-family: "Space Grotesk", sans-serif;
   color: var(--text-body);
+  font-size: 0.96rem;
+  line-height: 1.68;
 }
 
 .blog-feed {
@@ -3364,7 +3376,9 @@ a {
 .publish-date,
 .blog-description {
   margin: 0;
+  font-family: "Space Grotesk", sans-serif;
   color: var(--text-body);
+  line-height: 1.65;
 }
 
 .blog-tag-list {
@@ -3387,7 +3401,9 @@ a {
 
 .contact-panel p {
   margin: 0;
+  font-family: "Space Grotesk", sans-serif;
   color: var(--text-body);
+  line-height: 1.68;
 }
 
 .contact-panel strong {

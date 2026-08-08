@@ -1,16 +1,20 @@
-import {
+(function () {
+const {
   hero,
   bio,
   skills,
+  certifications,
   education,
   experience,
   footer,
   highlights,
-} from "./user-data/data.js";
+} = window.AppData || {};
 
-import { URLs } from "./user-data/urls.js";
+const { medium } = window.URLs || {};
 
-const { medium } = URLs;
+if (!window.AppData || !window.URLs) {
+  console.error("App data failed to load. Ensure user-data/data.js and user-data/urls.js are loaded before index.js.");
+}
 
 async function fetchBlogsFromMedium(url) {
   try {
@@ -88,6 +92,50 @@ function populateSkills(items, id) {
 
     card.append(title, summary, list);
     skillsTag.append(card);
+  });
+}
+
+function getCertificationShield(level) {
+  const normalizedLevel = (level || "associate").toLowerCase();
+
+  if (normalizedLevel === "expert") {
+    return "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-expert-badge.svg?branch=main";
+  }
+
+  return "https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main";
+}
+
+function populateCertifications(items, id) {
+  const certificationsTag = document.getElementById(id);
+
+  items.forEach((item) => {
+    const card = getElement("article", "certification-card animate-box");
+    card.setAttribute("data-animate-effect", "fadeInLeft");
+
+    const icon = getElement("img", "certification-shield");
+    icon.src = getCertificationShield(item.level || "associate");
+    icon.alt = `Microsoft ${item.level || "associate"} certification badge`;
+
+    const content = getElement("div", "certification-content");
+    const meta = getElement("p", "certification-meta");
+    meta.textContent = "CERTIFICATION";
+
+    const title = getElement("h3", "certification-title");
+    title.textContent = item.title;
+
+    content.append(meta, title);
+
+    if (item.detailsUrl) {
+      const detailsLink = getElement("a", "certification-link");
+      detailsLink.href = item.detailsUrl;
+      detailsLink.target = "_blank";
+      detailsLink.rel = "noreferrer";
+      detailsLink.textContent = "View certification details";
+      content.append(detailsLink);
+    }
+
+    card.append(icon, content);
+    certificationsTag.append(card);
   });
 }
 
@@ -349,13 +397,19 @@ function populateLinks(items, id) {
 }
 
 function populateHero(details) {
+  const fullName = (details.pageTitle || "Adam Walker").trim();
+  const [firstName, ...rest] = fullName.split(" ");
+  const lastName = rest.join(" ") || "Walker";
+
   document.getElementById("hero-eyebrow").textContent = details.eyebrow;
+  document.getElementById("hero-name-first").textContent = firstName;
+  document.getElementById("hero-name-last").textContent = lastName;
   document.getElementById("hero-title").textContent = details.title;
   document.getElementById("hero-summary").textContent = details.summary;
   document.getElementById("hero-focus").textContent = details.focus;
   document.getElementById("hero-location").textContent = details.location;
   document.getElementById("hero-availability").textContent = details.availability;
-  document.title = details.pageTitle;
+  document.title = fullName;
 }
 
 function populateHighlights(items, id) {
@@ -430,6 +484,8 @@ populateBio(bio, "bio");
 
 populateSkills(skills, "skills");
 
+populateCertifications(certifications, "certifications");
+
 fetchBlogsFromMedium(medium);
 
 populateExp_Edu(experience, "experience");
@@ -437,3 +493,4 @@ populateExp_Edu(experience, "experience");
 populateExp_Edu(education, "education");
 
 populateLinks(footer, "footer");
+})();

@@ -1,17 +1,17 @@
-export const hero = {
+const hero = {
   pageTitle: "Adam Walker",
-  eyebrow: "Full Stack Engineer • DevOps mindset • Product-focused delivery",
-  title: "Building reliable digital products from cloud infrastructure to polished user experiences.",
+  eyebrow: "Happily employed and building great products",
+  title: "Senior Full-Stack Engineer",
   summary:
-    "I design and ship software that connects backend reliability, cloud automation, and user-friendly interfaces so teams can move faster with confidence.",
+    "I build fast, thoughtful software from distributed backend systems to polished frontend and mobile experiences.",
   focus: "End-to-end engineering across backend services, frontend experiences, mobile apps, and cloud delivery.",
   location:
-    "Based in Scotland and collaborating with teams that value quality, maintainability, and practical delivery.",
+    "Based in Scotland, working with teams that care about maintainable systems and practical delivery.",
   availability:
-    "Available for engineering conversations around product delivery, architecture, automation, and platform thinking.",
+    "Open to conversations about product engineering, architecture, automation, and platform strategy.",
 };
 
-export const bio = [
+const bio = [
   "Hello, I'm Adam Walker!",
   "<strong>Full Stack Software Engineer</strong> with a background in DevOps and a focus on building efficient, scalable applications.",
   "Experienced in C#, Go, and Flutter/Dart, with a strong foundation in Azure cloud services.",
@@ -19,7 +19,7 @@ export const bio = [
   "Passionate about clean architecture, automation, and continuously improving engineering practices.",
 ];
 
-export const skills = [
+const skills = [
   {
     title: "Backend & APIs",
     summary: "Designing dependable services and integrations that stay maintainable as systems grow.",
@@ -47,7 +47,7 @@ export const skills = [
   },
 ];
 
-export const highlights = [
+const highlights = [
   {
     title: "Cloud-first delivery",
     description: "Shipping features with Azure-native infrastructure, automation, and operational visibility built in.",
@@ -62,7 +62,7 @@ export const highlights = [
   },
 ];
 
-export const experience = [
+const experience = [
   {
     title: "Safehinge Primera",
     duration: "March 2025 - Present",
@@ -108,7 +108,7 @@ export const experience = [
   },
 ];
 
-export const education = [
+const education = [
   {
     title: "Bachelor of Software Engineering",
     duration: "",
@@ -132,7 +132,35 @@ export const education = [
   },
 ];
 
-export const footer = [
+const certifications = [
+  {
+    level: "expert",
+    title: "Microsoft Certified: Azure Solutions Architect Expert",
+    detailsUrl: "",
+  },
+  {
+    level: "expert",
+    title: "Microsoft Certified: DevOps Engineer Expert",
+    detailsUrl: "",
+  },
+  {
+    level: "associate",
+    title: "Microsoft Certified: Azure AI Engineer Associate",
+    detailsUrl: "",
+  },
+  {
+    level: "associate",
+    title: "Microsoft Certified: Azure Administrator Associate",
+    detailsUrl: "",
+  },
+  {
+    level: "associate",
+    title: "Microsoft Certified: Azure Developer Associate",
+    detailsUrl: "",
+  },
+];
+
+const footer = [
   //   {
   //     label: "Dev Profiles",
   //     data: [
@@ -185,3 +213,14 @@ export const footer = [
     data: ["Made with &hearts; by Adam Walker"],
   },
 ];
+
+window.AppData = {
+  hero,
+  bio,
+  skills,
+  highlights,
+  experience,
+  education,
+  certifications,
+  footer,
+};
